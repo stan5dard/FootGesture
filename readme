@@ -1,0 +1,59 @@
+*** Total Data ***
+
+Total data is 6545 image set.
+Each gesture contains 50 frames of image data which we split data with 40 window_size 
+
+
+*** Order of code execution ***
+
+1. carpet_datacollet.py
+2. carpet_main.py
+2.1 "Enter the number of mode(1: model training, 2: model loading): "
+2.2 type number 1 => model training
+2.3 type number 2 => model loading and carpet inference
+
+*** Code Details ***
+
+1. carpet_datacollet.py
+
+We collect 3 types of gestures : Default, tapping, standing
+Each gesture records 50 frames (you can see the dataset visualization folder 'result_images'
+Also we denoise dataset by subtracting  max pressure value from dataset.
+
+2. carpet_main.py
+
+=> type number 1 : data preprocessing from 'carpet_dataset.py' and model training from 'carpet_model.py'
+ 
+=> tyep number 2 : model loading and carpet inferencing visualization from 'carpet_wrapper.py' and 'carpet_datacollet.py'
+
+3. carpet_dataset.py
+
+=> This code preprocess the data from carpet through windowing dataset.
+=> data shape : (window_size, 32, 32) => 32 means carpet dataset size.
+
+4. carpet_model.py
+
+=> We use 'CNN_LSTM model' to train the dataset.
+=> In 'carpet_main.py' you can change parameter using argparse
+
+5. carpet_wrapper.py
+
+=> In self.foot_gesture you can add label name of the gesture.
+=> In 'carpet_main.py' 81 line, you can change inference window_size
+
+
+*** Folder Details ***
+
+Folder from MIT : app, arduino_programs, common, configs, libs, sensors, storage, tools
+
+'results_images' contains visualized datset from '1. carpet_datacollet.py' code
+
+'trained_model' contains model.pt files from '2. carpet_main.py' code (number 1)
+
+'dataset' contains .hdf5 files from '2. carpet_main.py' code (number 1)
+
+If you have any questions about our codes, you can contact me E-mail.
+
+**seongminwoo@gm.gist.ac.kr**
+**jungseok17@gm.gist.ac.kr**
+
